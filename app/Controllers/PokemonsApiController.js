@@ -1,21 +1,31 @@
 import { ProxyState } from "../AppState.js"
+import Pokemon from "../Models/Pokemon.js";
 import { pokemonsApiService } from "../Services/PokemonsApiService.js"
 
 
 //PRIVATE
+function _draw() {
+  let template = ''
+  ProxyState.allPokemon.forEach(p => {
+    template += `<li onclick="app.pokemonsApiController.getPokemon('${p.name}')">${p.name}</li>`
+  });
+  document.getElementById("getAllPokemonApi").innerHTML = template
+}
 
-
-
+function _drawActive() {
+  document.getElementById("activePokemon").innerHTML = ProxyState.activePokemon ? ProxyState.activePokemon.Template : ""
+}
 
 
 //PUBLIC
 export default class PokemonsApiController {
 
   constructor() {
+    ProxyState.on('allPokemon', _draw)
+    ProxyState.on('activePokemon', _drawActive)
 
-    this.getAllPokemon
+    this.getAllPokemon()
   }
-
 
   async getAllPokemon() {
     try {
@@ -25,6 +35,13 @@ export default class PokemonsApiController {
     }
   }
 
+  async getPokemon(name) {
+    try {
+      await pokemonsApiService.getPokemon(name)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 }
 

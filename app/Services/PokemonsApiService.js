@@ -9,18 +9,19 @@ class PokemonsApiService {
 
   async getAllPokemon() {
     let response = await pokeApi.get()
-    console.log(response.data)
-
+    console.log(response.data.results)
+    ProxyState.allPokemon = response.data.results
   }
 
-
-
+  async getPokemon(name) {
+    let response = await pokeApi.get(name)
+    console.log(response.data)
+    ProxyState.activePokemon = new Pokemon(response.data)
+  }
 
 }
 
-
-
-export const pokemonsApiService = PokemonsApiService
+export const pokemonsApiService = new PokemonsApiService()
 
 
 

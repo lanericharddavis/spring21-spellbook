@@ -1,4 +1,37 @@
+import { ProxyState } from "../AppState.js"
+import Pokemon from "../Models/Pokemon.js"
+import { sandboxApi } from "./AxiosService.js"
 
+
+
+
+class SandboxPokemonsService {
+
+
+
+
+  async catchPokemon() {
+    debugger
+    let response = await sandboxApi.post('', ProxyState.activePokemon)
+    console.log(response.data)
+    ProxyState.myPokemon = [...ProxyState.myPokemon, new Pokemon(response.data)]
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+export const sandboxPokemonsService = new SandboxPokemonsService()
 
 
 

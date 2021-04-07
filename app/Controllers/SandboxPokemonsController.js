@@ -1,11 +1,38 @@
+import { ProxyState } from "../AppState.js"
+import { sandboxPokemonsService } from "../Services/SandboxPokemonsService.js"
+
+
+function _draw() {
+  let template = ''
+  ProxyState.myPokemon.forEach(p => {
+    template += `<li onclick="app.sandboxPokemonsController.catchPokemon('${p.id}')">${p.name}</li>`
+  });
+  document.getElementById("myPokemon").innerHTML = template
+}
 
 
 
 
 
+export default class SandboxPokemonsController {
+  constructor() {
+    ProxyState.on('myPokemon', _draw)
 
 
 
+  }
+
+  async catchPokemon() {
+    try {
+      await sandboxPokemonsService.catchPokemon()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+
+}
 
 
 

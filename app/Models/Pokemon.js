@@ -2,14 +2,31 @@ export default class Pokemon {
 
   constructor({ name, img, weight, height, types, sprites }) {
     this.name = name
-    this.img = img || sprites
-    this.weight = weight
-    this.height = height
-    this.types = types
+    this.img = img || sprites.other.dream_world.front_default
+    this.weight = weight.toString()
+    this.height = height.toString()
+    this.types = types[0].type.name
+  }
+
+  get Template() {
+    return `
+        <img class="card-img-top" src="${this.img}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">${this.name.toUpperCase()}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Type: ${this.type}</li>
+        <li class="list-group-item">Weight: ${this.weight}</li>
+        <li class="list-group-item">Height: ${this.height}</li>
+      </ul>
+      ${this.button}
+    `
   }
 
 
-
+  get button() {
+    return `<button class="btn btn-outline-warning p-2 mt-2 ml-5" onclick="app.sandboxPokemonsController.catchPokemon()">Catch</button>`
+  }
 
 }
 

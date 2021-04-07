@@ -4,8 +4,8 @@ export const pokeApi = axios.create({
 })
 
 
-// export const sandboxApi = axios.create({
-//   baseURL: 'https://bcw-sandbox.herokuapp.com/api/class/spells',
-//   timeout: 3000
-// })
+export const sandboxApi = axios.create({
+  baseURL: 'https://bcw-sandbox.herokuapp.com/api/lane/pokemon',
+  timeout: 3000
+})
 
