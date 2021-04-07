@@ -11,16 +11,18 @@ class SandboxPokemonsService {
 
 
   async catchPokemon() {
-    debugger
     let response = await sandboxApi.post('', ProxyState.activePokemon)
     console.log(response.data)
     ProxyState.myPokemon = [...ProxyState.myPokemon, new Pokemon(response.data)]
   }
 
+  async getAllPokemon() {
+    let res = await sandboxApi.get('')
+    ProxyState.myPokemon = res.data.map(p => new Pokemon(p))
+
+  }
 
 }
-
-
 
 
 

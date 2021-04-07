@@ -25,7 +25,7 @@ export default class Pokemon {
 
 
   get button() {
-    return `<button class="btn btn-outline-warning p-2 mt-2 ml-5" onclick="app.sandboxPokemonsController.catchPokemon()">Catch</button>`
+    return `<button class="btn btn-outline-warning p-2 my-2 ml-5 " onclick="app.sandboxPokemonsController.catchPokemon()">Catch</button>`
   }
 
 }

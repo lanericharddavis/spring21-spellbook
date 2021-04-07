@@ -19,7 +19,15 @@ export default class SandboxPokemonsController {
     ProxyState.on('myPokemon', _draw)
 
 
+    this.getAllPokemon()
+  }
 
+  async getAllPokemon() {
+    try {
+      await sandboxPokemonsService.getAllPokemon()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async catchPokemon() {
