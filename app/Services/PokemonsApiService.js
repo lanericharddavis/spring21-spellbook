@@ -1,11 +1,17 @@
-import Pokemon from "../Models/Pokemon"
+import { ProxyState } from "../AppState.js"
+import Pokemon from "../Models/Pokemon.js"
+import { pokeApi } from "./AxiosService.js"
 
 
 
 
 class PokemonsApiService {
 
+  async getAllPokemon() {
+    let response = await pokeApi.get()
+    console.log(response.data)
 
+  }
 
 
 
@@ -15,6 +21,27 @@ class PokemonsApiService {
 
 
 export const pokemonsApiService = PokemonsApiService
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

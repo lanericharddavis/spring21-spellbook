@@ -26,6 +26,15 @@ export default class Pokemon {
 
 
 
+
+
+
+
+
+
+
+
+
 // export default class Spell {
 //   constructor({ id, name, description, level, range, duration, components, desc }) {
 //     this.id = id

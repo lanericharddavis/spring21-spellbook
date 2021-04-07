@@ -1,6 +1,32 @@
+import { ProxyState } from "../AppState.js"
+import { pokemonsApiService } from "../Services/PokemonsApiService.js"
+
+
+//PRIVATE
 
 
 
+
+
+//PUBLIC
+export default class PokemonsApiController {
+
+  constructor() {
+
+    this.getAllPokemon
+  }
+
+
+  async getAllPokemon() {
+    try {
+      await pokemonsApiService.getAllPokemon()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+}
 
 
 

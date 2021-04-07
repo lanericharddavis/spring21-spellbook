@@ -8,7 +8,6 @@ class AppState extends EventEmitter {
 
   myPokemon = []
 
-  /** @type {Pokemon} */
 
 }
 
